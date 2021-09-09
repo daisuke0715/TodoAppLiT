@@ -3,17 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2FA9BA9EA65F9E0CFA666C4D /* Pods_TodoAppLiT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F93F53C3E56C6226A5C5352 /* Pods_TodoAppLiT.framework */; };
 		8074F88426EA61330046716F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88326EA61330046716F /* AppDelegate.swift */; };
 		8074F88626EA61330046716F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88526EA61330046716F /* SceneDelegate.swift */; };
-		8074F88826EA61330046716F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88726EA61330046716F /* ViewController.swift */; };
+		8074F88826EA61330046716F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88726EA61330046716F /* FirstViewController.swift */; };
 		8074F88B26EA61330046716F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8074F88926EA61330046716F /* Main.storyboard */; };
 		8074F88D26EA61380046716F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8074F88C26EA61380046716F /* Assets.xcassets */; };
 		8074F89026EA61380046716F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8074F88E26EA61380046716F /* LaunchScreen.storyboard */; };
+		8074F8B126EA64FF0046716F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8074F8B026EA64FF0046716F /* GoogleService-Info.plist */; };
+		8074F8B826EA66BA0046716F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8B726EA66BA0046716F /* LoginViewController.swift */; };
+		8074F8BE26EA67AB0046716F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8BD26EA67AB0046716F /* Alert.swift */; };
+		8074F8C226EA67CE0046716F /* LodingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8C126EA67CE0046716F /* LodingIcon.swift */; };
+		8074F8C526EA685B0046716F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8C426EA685B0046716F /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +28,16 @@
 		8074F88026EA61330046716F /* TodoAppLiT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppLiT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8074F88326EA61330046716F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8074F88526EA61330046716F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8074F88726EA61330046716F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8074F88726EA61330046716F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8074F88A26EA61330046716F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8074F88C26EA61380046716F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8074F88F26EA61380046716F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8074F89126EA61380046716F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8074F8B026EA64FF0046716F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8074F8B726EA66BA0046716F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8074F8BD26EA67AB0046716F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		8074F8C126EA67CE0046716F /* LodingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodingIcon.swift; sourceTree = "<group>"; };
+		8074F8C426EA685B0046716F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +73,44 @@
 		8074F88226EA61330046716F /* TodoAppLiT */ = {
 			isa = PBXGroup;
 			children = (
+				8074F8B326EA664E0046716F /* Model */,
+				8074F8B426EA66530046716F /* View */,
+				8074F8B526EA66570046716F /* Controller */,
 				8074F88326EA61330046716F /* AppDelegate.swift */,
 				8074F88526EA61330046716F /* SceneDelegate.swift */,
-				8074F88726EA61330046716F /* ViewController.swift */,
 				8074F88926EA61330046716F /* Main.storyboard */,
 				8074F88C26EA61380046716F /* Assets.xcassets */,
 				8074F88E26EA61380046716F /* LaunchScreen.storyboard */,
 				8074F89126EA61380046716F /* Info.plist */,
+				8074F8B026EA64FF0046716F /* GoogleService-Info.plist */,
 			);
 			path = TodoAppLiT;
+			sourceTree = "<group>";
+		};
+		8074F8B326EA664E0046716F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8074F8BD26EA67AB0046716F /* Alert.swift */,
+				8074F8C126EA67CE0046716F /* LodingIcon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8074F8B426EA66530046716F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8074F8B526EA66570046716F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8074F88726EA61330046716F /* FirstViewController.swift */,
+				8074F8B726EA66BA0046716F /* LoginViewController.swift */,
+				8074F8C426EA685B0046716F /* SignUpViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CE6C8F761DBD55509B0E153F /* Frameworks */ = {
@@ -88,7 +127,6 @@
 				239BA906415D34B53112809C /* Pods-TodoAppLiT.debug.xcconfig */,
 				566367E3F876B02C60D9B036 /* Pods-TodoAppLiT.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -152,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8074F89026EA61380046716F /* LaunchScreen.storyboard in Resources */,
+				8074F8B126EA64FF0046716F /* GoogleService-Info.plist in Resources */,
 				8074F88D26EA61380046716F /* Assets.xcassets in Resources */,
 				8074F88B26EA61330046716F /* Main.storyboard in Resources */,
 			);
@@ -206,7 +245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8074F88826EA61330046716F /* ViewController.swift in Sources */,
+				8074F8BE26EA67AB0046716F /* Alert.swift in Sources */,
+				8074F8C526EA685B0046716F /* SignUpViewController.swift in Sources */,
+				8074F8C226EA67CE0046716F /* LodingIcon.swift in Sources */,
+				8074F8B826EA66BA0046716F /* LoginViewController.swift in Sources */,
+				8074F88826EA61330046716F /* FirstViewController.swift in Sources */,
 				8074F88426EA61330046716F /* AppDelegate.swift in Sources */,
 				8074F88626EA61330046716F /* SceneDelegate.swift in Sources */,
 			);

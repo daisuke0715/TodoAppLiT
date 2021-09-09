@@ -7,4 +7,6 @@ target 'TodoAppLiT' do
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'CryptoKit', :git => 'https://github.com/ameingast/cryptokit.git'
+  pod 'IQKeyboardManager'
 end
