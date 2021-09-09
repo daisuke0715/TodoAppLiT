@@ -19,6 +19,9 @@
 		8074F8BE26EA67AB0046716F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8BD26EA67AB0046716F /* Alert.swift */; };
 		8074F8C226EA67CE0046716F /* LodingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8C126EA67CE0046716F /* LodingIcon.swift */; };
 		8074F8C526EA685B0046716F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8C426EA685B0046716F /* SignUpViewController.swift */; };
+		8074F8F726EA6C1E0046716F /* FirstViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8F526EA6C1E0046716F /* FirstViewTableViewCell.swift */; };
+		8074F8F826EA6C1E0046716F /* FirstViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8074F8F626EA6C1E0046716F /* FirstViewTableViewCell.xib */; };
+		8074F8FB26EA6DD00046716F /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F8FA26EA6DD00046716F /* MemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		8074F8BD26EA67AB0046716F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8074F8C126EA67CE0046716F /* LodingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodingIcon.swift; sourceTree = "<group>"; };
 		8074F8C426EA685B0046716F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8074F8F526EA6C1E0046716F /* FirstViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewTableViewCell.swift; sourceTree = "<group>"; };
+		8074F8F626EA6C1E0046716F /* FirstViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewTableViewCell.xib; sourceTree = "<group>"; };
+		8074F8FA26EA6DD00046716F /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,16 +79,12 @@
 		8074F88226EA61330046716F /* TodoAppLiT */ = {
 			isa = PBXGroup;
 			children = (
+				8074F88326EA61330046716F /* AppDelegate.swift */,
+				8074F88526EA61330046716F /* SceneDelegate.swift */,
 				8074F8B326EA664E0046716F /* Model */,
 				8074F8B426EA66530046716F /* View */,
 				8074F8B526EA66570046716F /* Controller */,
-				8074F88326EA61330046716F /* AppDelegate.swift */,
-				8074F88526EA61330046716F /* SceneDelegate.swift */,
-				8074F88926EA61330046716F /* Main.storyboard */,
-				8074F88C26EA61380046716F /* Assets.xcassets */,
-				8074F88E26EA61380046716F /* LaunchScreen.storyboard */,
-				8074F89126EA61380046716F /* Info.plist */,
-				8074F8B026EA64FF0046716F /* GoogleService-Info.plist */,
+				8074F8F426EA6BDF0046716F /* Resources */,
 			);
 			path = TodoAppLiT;
 			sourceTree = "<group>";
@@ -99,6 +101,10 @@
 		8074F8B426EA66530046716F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8074F88926EA61330046716F /* Main.storyboard */,
+				8074F88E26EA61380046716F /* LaunchScreen.storyboard */,
+				8074F8F526EA6C1E0046716F /* FirstViewTableViewCell.swift */,
+				8074F8F626EA6C1E0046716F /* FirstViewTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,8 +115,19 @@
 				8074F88726EA61330046716F /* FirstViewController.swift */,
 				8074F8B726EA66BA0046716F /* LoginViewController.swift */,
 				8074F8C426EA685B0046716F /* SignUpViewController.swift */,
+				8074F8FA26EA6DD00046716F /* MemoViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8074F8F426EA6BDF0046716F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8074F88C26EA61380046716F /* Assets.xcassets */,
+				8074F89126EA61380046716F /* Info.plist */,
+				8074F8B026EA64FF0046716F /* GoogleService-Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CE6C8F761DBD55509B0E153F /* Frameworks */ = {
@@ -192,6 +209,7 @@
 				8074F89026EA61380046716F /* LaunchScreen.storyboard in Resources */,
 				8074F8B126EA64FF0046716F /* GoogleService-Info.plist in Resources */,
 				8074F88D26EA61380046716F /* Assets.xcassets in Resources */,
+				8074F8F826EA6C1E0046716F /* FirstViewTableViewCell.xib in Resources */,
 				8074F88B26EA61330046716F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,8 +268,10 @@
 				8074F8C226EA67CE0046716F /* LodingIcon.swift in Sources */,
 				8074F8B826EA66BA0046716F /* LoginViewController.swift in Sources */,
 				8074F88826EA61330046716F /* FirstViewController.swift in Sources */,
+				8074F8F726EA6C1E0046716F /* FirstViewTableViewCell.swift in Sources */,
 				8074F88426EA61330046716F /* AppDelegate.swift in Sources */,
 				8074F88626EA61330046716F /* SceneDelegate.swift in Sources */,
+				8074F8FB26EA6DD00046716F /* MemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
