@@ -218,7 +218,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - CryptoKit (1.6.0)
   - Firebase (8.1.1):
     - Firebase/Core (= 8.1.1)
   - Firebase/Auth (8.1.1):
@@ -361,7 +360,6 @@ PODS:
   - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
-  - CryptoKit (from `https://github.com/ameingast/cryptokit.git`)
   - Firebase
   - Firebase/Auth
   - Firebase/Firestore
@@ -389,19 +387,9 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
 
-EXTERNAL SOURCES:
-  CryptoKit:
-    :git: https://github.com/ameingast/cryptokit.git
-
-CHECKOUT OPTIONS:
-  CryptoKit:
-    :commit: 9d1f0aebac7c76fc0dcfe92f5d690d645d236490
-    :git: https://github.com/ameingast/cryptokit.git
-
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  CryptoKit: 80c67b9088c586f5ada8722c80f69a270c10d3e5
   Firebase: 4bb49ae87756034cef870fa3c4006235eb46f475
   FirebaseAnalytics: d6dd061b26a04744cb988c66e29697181152b2a3
   FirebaseAuth: e069ff5736fe9d5dcf61f36244bb1b1ce1897d17
@@ -420,6 +408,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 68c65a3a8eb19c01c0e3d57f0c14a61e7e3eb810
+PODFILE CHECKSUM: d71c361958abdfed46ac1961ea1741255ab79d34
 
 COCOAPODS: 1.10.1

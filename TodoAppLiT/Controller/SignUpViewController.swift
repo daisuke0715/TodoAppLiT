@@ -5,8 +5,7 @@
 //  Created by 河村大介 on 2021/09/10.
 //
 
-import UIKit
-
+import Foundation
 import UIKit
 import AuthenticationServices
 import Firebase

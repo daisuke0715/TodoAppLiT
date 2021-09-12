@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 public class Alert {
-    func resetMailAlert(title:String, message:String, actiontitle:String) -> UIAlertController{
+    func resetMailAlert(title:String, message:String, actionTitle:String) -> UIAlertController{
         let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: actiontitle, style: .default, handler: nil))
+        dialog.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
         return dialog
     }
     
@@ -20,4 +20,5 @@ public class Alert {
         dialog.addAction(UIAlertAction(title: actionTitleText, style: .default, handler: nil))
         return dialog
     }
+    
 }

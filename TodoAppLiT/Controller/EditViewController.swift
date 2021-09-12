@@ -36,11 +36,18 @@ class EditViewController: UIViewController {
     }
     
     @objc func doneDate() {
-        
+        dateTextField.endEditing(true)
+                
+        // 日付のフォーマット
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateTextField.text = "\(formatter.string(from: Date()))"
     }
     
     @IBAction func done(_ sender: Any) {
-        
+        // FIreStoreのデータを更新
+       
+        // pop処理
     }
     
 }

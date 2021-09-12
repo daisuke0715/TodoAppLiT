@@ -66,10 +66,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().sendPasswordReset(withEmail: resetEmail!) { (error) in
                 DispatchQueue.main.async {
                     if error == nil {
-                        let dialog = self.alert.resetMailAlert(title: "メールを送信しました", message: "メールでパスワードの再設定を行ってください。", actiontitle: "OK")
+                        let dialog = self.alert.resetMailAlert(title: "メールを送信しました", message: "メールでパスワードの再設定を行ってください。", actionTitle: "OK")
                         self.present(dialog, animated: true, completion: nil)
                     } else {
-                        let dialog = self.alert.resetMailAlert(title: "エラー", message: "このメールアドレスは登録されてません。", actiontitle: "OK")
+                        let dialog = self.alert.resetMailAlert(title: "エラー", message: "このメールアドレスは登録されてません。", actionTitle: "OK")
                         self.present(dialog, animated: true, completion: nil)
                     }
                 }

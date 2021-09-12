@@ -36,13 +36,18 @@ class MemoViewController: UIViewController {
     
 
     @objc func doneDate() {
-        
+        dateTextField.endEditing(true)
+                
+        // 日付のフォーマット
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateTextField.text = "\(formatter.string(from: Date()))"
     }
     
     
     
     @IBAction func save(_ sender: Any) {
-        
+        // 入力されたデータをFireStoreに登録
         
     }
     
