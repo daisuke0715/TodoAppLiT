@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 if (authResult?.user) != nil {
                     self.loadingIcon.presentLoadingIcon()
-                    self.performSegue(withIdentifier: "moveFirstView", sender: nil)
+                    self.performSegue(withIdentifier: "toFirstView", sender: nil)
                 } else if error != nil {
                     let dialog = self.alert.failedAlert(titleText: "ログイン失敗", actionTitleText: "OK", message: (error?.localizedDescription.description)!)
                     self.present(dialog, animated: true, completion: nil)

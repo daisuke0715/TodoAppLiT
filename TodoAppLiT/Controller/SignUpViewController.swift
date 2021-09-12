@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController, ASAuthorizationControllerDelegate,
                             let dialog = self.alert.failedAlert(titleText: "新規登録失敗", actionTitleText: "OK", message: (error?.localizedDescription.description)!)
                             self.present(dialog, animated: true, completion: nil)
                         } else {
-                            self.performSegue(withIdentifier: "moveFirstView", sender: nil)
+                            self.performSegue(withIdentifier: "toFirstView", sender: nil)
                         }
                     }
                 } else if error != nil {
@@ -168,7 +168,7 @@ class SignUpViewController: UIViewController, ASAuthorizationControllerDelegate,
                         self.present(dialog, animated: true, completion: nil)
                     } else {
                         UserDefaults.standard.set(true, forKey: "visit")
-                        self.performSegue(withIdentifier: "moveFirstView", sender: nil)
+                        self.performSegue(withIdentifier: "toFirstView", sender: nil)
                     }
                 }
             }

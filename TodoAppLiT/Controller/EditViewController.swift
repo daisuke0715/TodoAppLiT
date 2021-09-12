@@ -1,29 +1,27 @@
 //
-//  MemoViewController.swift
+//  EditViewController.swift
 //  TodoAppLiT
 //
-//  Created by 河村大介 on 2021/09/10.
+//  Created by 河村大介 on 2021/09/12.
 //
 
 import UIKit
 
-class MemoViewController: UIViewController {
-
-    @IBOutlet weak var todoTextField: UITextField!
+class EditViewController: UIViewController {
+    
+    @IBOutlet var todoTextField: UIView!
     @IBOutlet weak var detailTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    
-    
-    @IBAction func save(_ sender: Any) {
-        
-        
-    }
-    
 
+        
+    }
+    
+    @IBAction func done(_ sender: Any) {
+        
+    }
+    
 }

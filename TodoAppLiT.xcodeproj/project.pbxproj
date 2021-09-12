@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FA9BA9EA65F9E0CFA666C4D /* Pods_TodoAppLiT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F93F53C3E56C6226A5C5352 /* Pods_TodoAppLiT.framework */; };
+		805B4D5626EDFE7600D4255E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B4D5526EDFE7600D4255E /* EditViewController.swift */; };
 		8074F88426EA61330046716F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88326EA61330046716F /* AppDelegate.swift */; };
 		8074F88626EA61330046716F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88526EA61330046716F /* SceneDelegate.swift */; };
 		8074F88826EA61330046716F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88726EA61330046716F /* FirstViewController.swift */; };
@@ -28,6 +29,7 @@
 		239BA906415D34B53112809C /* Pods-TodoAppLiT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoAppLiT.debug.xcconfig"; path = "Target Support Files/Pods-TodoAppLiT/Pods-TodoAppLiT.debug.xcconfig"; sourceTree = "<group>"; };
 		566367E3F876B02C60D9B036 /* Pods-TodoAppLiT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoAppLiT.release.xcconfig"; path = "Target Support Files/Pods-TodoAppLiT/Pods-TodoAppLiT.release.xcconfig"; sourceTree = "<group>"; };
 		6F93F53C3E56C6226A5C5352 /* Pods_TodoAppLiT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoAppLiT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		805B4D5526EDFE7600D4255E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8074F88026EA61330046716F /* TodoAppLiT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppLiT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8074F88326EA61330046716F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8074F88526EA61330046716F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				8074F8B726EA66BA0046716F /* LoginViewController.swift */,
 				8074F8C426EA685B0046716F /* SignUpViewController.swift */,
 				8074F8FA26EA6DD00046716F /* MemoViewController.swift */,
+				805B4D5526EDFE7600D4255E /* EditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				8074F88826EA61330046716F /* FirstViewController.swift in Sources */,
 				8074F8F726EA6C1E0046716F /* FirstViewTableViewCell.swift in Sources */,
 				8074F88426EA61330046716F /* AppDelegate.swift in Sources */,
+				805B4D5626EDFE7600D4255E /* EditViewController.swift in Sources */,
 				8074F88626EA61330046716F /* SceneDelegate.swift in Sources */,
 				8074F8FB26EA6DD00046716F /* MemoViewController.swift in Sources */,
 			);

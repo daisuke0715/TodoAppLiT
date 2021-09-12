@@ -99,6 +99,7 @@
                                             <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="tapLoginButton:" destination="foc-Iv-C8e" eventType="touchUpInside" id="Fql-IS-qrr"/>
                                             <segue destination="cpx-kf-5G9" kind="presentation" identifier="toFirstView" modalPresentationStyle="fullScreen" id="P1c-WQ-ZbO"/>
                                         </connections>
                                     </button>
@@ -114,6 +115,7 @@
                                             <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="moveSignUp:" destination="foc-Iv-C8e" eventType="touchUpInside" id="4w3-go-YR1"/>
                                             <segue destination="leK-Se-r4d" kind="presentation" identifier="toSignUp" modalPresentationStyle="fullScreen" id="TFg-zi-T8V"/>
                                         </connections>
                                     </button>
@@ -134,6 +136,9 @@
                                         <state key="normal" title="こちら">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgetPassword:" destination="foc-Iv-C8e" eventType="touchUpInside" id="OHM-Tn-TUX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -159,6 +164,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="KaK-qo-a6y"/>
+                    <connections>
+                        <outlet property="loginButton" destination="gyQ-93-hae" id="v6r-cL-Wjf"/>
+                        <outlet property="loginEmailTextField" destination="UF1-DT-fJ7" id="Qjc-Hy-o8a"/>
+                        <outlet property="loginPasswordTextField" destination="ELp-3D-9yi" id="yhD-SV-l2m"/>
+                        <outlet property="signUpButton" destination="htR-4N-e9o" id="8KQ-ae-JAr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wea-ZJ-7yB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,6 +243,9 @@
                                         <state key="normal" title="新規登録">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUp:" destination="leK-Se-r4d" eventType="touchUpInside" id="Hlq-Av-rxZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ0-x4-1bD">
                                         <rect key="frame" x="0.0" y="72" width="250" height="50"/>
@@ -244,6 +258,9 @@
                                         <state key="normal" title="Apple SignIn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="appleSignIn:" destination="leK-Se-r4d" eventType="touchUpInside" id="B84-Tn-BEG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhs-gI-B5U">
                                         <rect key="frame" x="0.0" y="144" width="250" height="50"/>
@@ -256,6 +273,9 @@
                                         <state key="normal" title="ログイン画面へ">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backToLogin:" destination="leK-Se-r4d" eventType="touchUpInside" id="IWn-lF-aDD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -319,6 +339,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appleButton" destination="eJ0-x4-1bD" id="fba-In-cBQ"/>
+                        <outlet property="registerButton" destination="AjL-YC-iWo" id="ieB-UO-hpq"/>
+                        <outlet property="registerEmailTextField" destination="21P-WY-c8B" id="zjA-mr-uX1"/>
+                        <outlet property="registerNameTextField" destination="p7R-Nq-Xsd" id="stT-Td-bZU"/>
+                        <outlet property="registerPasswordTextField" destination="zTY-6p-mVE" id="mJs-7l-a3P"/>
                         <segue destination="cpx-kf-5G9" kind="presentation" identifier="toFirstView" modalPresentationStyle="fullScreen" id="MLG-SK-gND"/>
                     </connections>
                 </viewController>
@@ -367,6 +392,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="Cfa-O4-VpJ" id="5WE-yU-ZfF"/>
                         <segue destination="pIb-g5-uBU" kind="show" identifier="toEdit" id="fJi-lI-ewT"/>
                     </connections>
                 </viewController>
@@ -446,8 +472,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="追加" id="Dw1-ON-98V">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Mdi-gM-cIN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Mdi-gM-cIN">
+                            <connections>
+                                <action selector="save:" destination="1A1-gW-Uik" id="sgN-4s-e45"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateTextField" destination="4wQ-NY-P0D" id="mLm-jr-WgN"/>
+                        <outlet property="detailTextField" destination="hZS-WE-rob" id="mkI-16-hAZ"/>
+                        <outlet property="todoTextField" destination="unw-2e-H3e" id="ayE-WC-g3l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qns-Yc-el3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -456,7 +491,7 @@
         <!--EditMemoViewController-->
         <scene sceneID="nsd-pu-S0o">
             <objects>
-                <viewController id="pIb-g5-uBU" userLabel="EditMemoViewController" sceneMemberID="viewController">
+                <viewController id="pIb-g5-uBU" userLabel="EditMemoViewController" customClass="EditViewController" customModule="TodoAppLiT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DBX-dB-M2f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -509,18 +544,6 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPm-F8-fPQ">
-                                <rect key="frame" x="82" y="677" width="250" height="65"/>
-                                <color key="backgroundColor" red="0.047058823530000002" green="0.25490196079999999" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="bUP-Qx-WMY"/>
-                                    <constraint firstAttribute="height" constant="65" id="x6Z-1e-BHK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <state key="normal" title="完了にする">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="56R-Uk-HtB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -529,8 +552,6 @@
                             <constraint firstItem="CHh-y5-QvB" firstAttribute="top" secondItem="FR0-vj-4kH" secondAttribute="bottom" constant="70" id="3TJ-BM-OaG"/>
                             <constraint firstItem="56R-Uk-HtB" firstAttribute="trailing" secondItem="FR0-vj-4kH" secondAttribute="trailing" constant="30" id="ClH-MT-95M"/>
                             <constraint firstItem="a2L-Nb-7qd" firstAttribute="top" secondItem="CHh-y5-QvB" secondAttribute="bottom" constant="70" id="GWm-Au-Rq9"/>
-                            <constraint firstItem="56R-Uk-HtB" firstAttribute="bottom" secondItem="DPm-F8-fPQ" secondAttribute="bottom" constant="120" id="OCp-4P-cGz"/>
-                            <constraint firstItem="DPm-F8-fPQ" firstAttribute="centerX" secondItem="DBX-dB-M2f" secondAttribute="centerX" id="Yik-9z-GaB"/>
                             <constraint firstItem="FR0-vj-4kH" firstAttribute="top" secondItem="56R-Uk-HtB" secondAttribute="top" constant="70" id="Z8M-Y3-790"/>
                             <constraint firstItem="56R-Uk-HtB" firstAttribute="trailing" secondItem="a2L-Nb-7qd" secondAttribute="trailing" constant="30" id="pm1-ur-GC1"/>
                             <constraint firstItem="FR0-vj-4kH" firstAttribute="leading" secondItem="56R-Uk-HtB" secondAttribute="leading" constant="30" id="qdx-PB-e93"/>
@@ -539,8 +560,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="詳細" id="7ss-lu-eKU">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="3hr-Bp-jaL"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="3hr-Bp-jaL">
+                            <connections>
+                                <action selector="done:" destination="pIb-g5-uBU" id="wd0-0K-Xsu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateTextField" destination="LX2-Gh-ax0" id="oav-O4-XZ7"/>
+                        <outlet property="detailTextField" destination="g3n-h7-1wh" id="BVy-cj-OBA"/>
+                        <outlet property="todoTextField" destination="DBX-dB-M2f" id="V6x-f3-oJ0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Lx-uO-hX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
