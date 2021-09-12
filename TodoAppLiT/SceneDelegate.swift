@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        print(Auth.auth().currentUser?.uid)
         if Auth.auth().currentUser?.uid == nil {
             // ログインしていない場合
             let window: UIWindow = UIWindow(windowScene: scene as! UIWindowScene)
