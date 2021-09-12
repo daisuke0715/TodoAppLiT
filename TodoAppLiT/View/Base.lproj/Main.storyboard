@@ -100,7 +100,6 @@
                                         </state>
                                         <connections>
                                             <action selector="tapLoginButton:" destination="foc-Iv-C8e" eventType="touchUpInside" id="Fql-IS-qrr"/>
-                                            <segue destination="cpx-kf-5G9" kind="presentation" identifier="toFirstView" modalPresentationStyle="fullScreen" id="P1c-WQ-ZbO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htR-4N-e9o">
@@ -169,6 +168,7 @@
                         <outlet property="loginEmailTextField" destination="UF1-DT-fJ7" id="Qjc-Hy-o8a"/>
                         <outlet property="loginPasswordTextField" destination="ELp-3D-9yi" id="yhD-SV-l2m"/>
                         <outlet property="signUpButton" destination="htR-4N-e9o" id="8KQ-ae-JAr"/>
+                        <segue destination="cpx-kf-5G9" kind="presentation" identifier="toFirstView" modalPresentationStyle="fullScreen" id="MNK-cb-cKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wea-ZJ-7yB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -384,7 +384,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todo" id="vV5-h7-O71">
-                        <barButtonItem key="leftBarButtonItem" title="logout" id="5Qh-gd-s3H"/>
+                        <barButtonItem key="leftBarButtonItem" title="logout" id="5Qh-gd-s3H">
+                            <connections>
+                                <action selector="logout:" destination="BYZ-38-t0r" id="jTC-6U-LP4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Gqt-6a-C6U">
                             <connections>
                                 <segue destination="1A1-gW-Uik" kind="show" id="uu4-cd-oBM"/>
@@ -597,7 +601,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MLG-SK-gND"/>
+        <segue reference="MNK-cb-cKy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
