@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5A1EDA24F052AD04F1BCA562 /* Pods_TodoAppLiT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCD4F2F5A0A3DFA0B4209F4 /* Pods_TodoAppLiT.framework */; };
 		805B4D5626EDFE7600D4255E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B4D5526EDFE7600D4255E /* EditViewController.swift */; };
-		805B4D5A26EE0B2000D4255E /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B4D5926EE0B2000D4255E /* DataStore.swift */; };
 		805B4D6026EE227000D4255E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 805B4D5B26EE123000D4255E /* GoogleService-Info.plist */; };
 		8074F88426EA61330046716F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88326EA61330046716F /* AppDelegate.swift */; };
 		8074F88626EA61330046716F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074F88526EA61330046716F /* SceneDelegate.swift */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		781B033BBF9B74439C359A94 /* Pods-TodoAppLiT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoAppLiT.debug.xcconfig"; path = "Target Support Files/Pods-TodoAppLiT/Pods-TodoAppLiT.debug.xcconfig"; sourceTree = "<group>"; };
 		805B4D5526EDFE7600D4255E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		805B4D5926EE0B2000D4255E /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		805B4D5B26EE123000D4255E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		805B4D5C26EE123000D4255E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8074F88026EA61330046716F /* TodoAppLiT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppLiT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +98,6 @@
 			children = (
 				8074F8BD26EA67AB0046716F /* Alert.swift */,
 				8074F8C126EA67CE0046716F /* LodingIcon.swift */,
-				805B4D5926EE0B2000D4255E /* DataStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				8074F8C526EA685B0046716F /* SignUpViewController.swift in Sources */,
 				8074F8C226EA67CE0046716F /* LodingIcon.swift in Sources */,
 				8074F8B826EA66BA0046716F /* LoginViewController.swift in Sources */,
-				805B4D5A26EE0B2000D4255E /* DataStore.swift in Sources */,
 				8074F88826EA61330046716F /* FirstViewController.swift in Sources */,
 				8074F8F726EA6C1E0046716F /* FirstViewTableViewCell.swift in Sources */,
 				8074F88426EA61330046716F /* AppDelegate.swift in Sources */,

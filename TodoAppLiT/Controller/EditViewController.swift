@@ -6,18 +6,34 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var todoTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     
     var datePicker: UIDatePicker = UIDatePicker()
     let alert: Alert = Alert()
+    let db = Firestore.firestore()
+    
+    var todoText: String!
+    var detailText: String!
+    var dateText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        todoTextField.delegate = self
+        detailTextField.delegate = self
+        dateTextField.delegate = self
+        
+        todoTextField.text = todoText
+        detailTextField.text = detailText
+        dateTextField.text = dateText
+        
         // ピッカーの設定
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         datePicker.timeZone = NSTimeZone.local
@@ -36,6 +52,7 @@ class EditViewController: UIViewController {
         
     }
     
+    
     @objc func doneDate() {
         dateTextField.endEditing(true)
                 
@@ -46,18 +63,38 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        
+        // ========================================
+        // FireStoreのデータを更新する処理
+        
         // 入力されたデータをFireStoreに登録
         if let _todoText = todoTextField.text,
             let _detailText = detailTextField.text,
             let _dateText = dateTextField.text {
             // 全ての値がnullじゃなかっらFireStoreへの保存を実行
-                        
+            
+        // ========================================
             self.navigationController?.popViewController(animated: true)
             
         } else {
             // どれかがnullだった時の処理
             alert.failedAlert(titleText: "入力してください", actionTitleText: "OK", message: "入力が完了していません。")
         }
+    }
+    
+    
+    // テキストビューを監視
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){
+            if self.todoTextField.text == "" ||
+                self.detailTextField.text == "" ||
+                self.dateTextField.text == "" {
+                self.doneButton.isEnabled = false
+            } else {
+                self.doneButton.isEnabled = true
+            }
+        }
+        return true
     }
     
 }

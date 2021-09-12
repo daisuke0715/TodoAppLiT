@@ -354,7 +354,7 @@
         <!--TodoViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="firstVC" id="BYZ-38-t0r" userLabel="TodoViewController" customClass="FirstViewController" customModule="TodoAppLiT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="TodoViewController" customClass="FirstViewController" customModule="TodoAppLiT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,6 +485,7 @@
                     <connections>
                         <outlet property="dateTextField" destination="4wQ-NY-P0D" id="mLm-jr-WgN"/>
                         <outlet property="detailTextField" destination="hZS-WE-rob" id="mkI-16-hAZ"/>
+                        <outlet property="saveButton" destination="Mdi-gM-cIN" id="5rc-Zs-BH5"/>
                         <outlet property="todoTextField" destination="unw-2e-H3e" id="ayE-WC-g3l"/>
                     </connections>
                 </viewController>
@@ -573,6 +574,7 @@
                     <connections>
                         <outlet property="dateTextField" destination="LX2-Gh-ax0" id="oav-O4-XZ7"/>
                         <outlet property="detailTextField" destination="g3n-h7-1wh" id="BVy-cj-OBA"/>
+                        <outlet property="doneButton" destination="3hr-Bp-jaL" id="ehZ-OO-FRb"/>
                         <outlet property="todoTextField" destination="TPM-D2-MfQ" id="x12-as-ajl"/>
                     </connections>
                 </viewController>
@@ -583,7 +585,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LJ1-rA-AJa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cpx-kf-5G9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="firstVC" automaticallyAdjustsScrollViewInsets="NO" id="cpx-kf-5G9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Cqh-Qz-Xdb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSU-Jp-Qi6">
@@ -601,7 +603,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MNK-cb-cKy"/>
+        <segue reference="MLG-SK-gND"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>

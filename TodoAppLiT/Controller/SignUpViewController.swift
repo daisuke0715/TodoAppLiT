@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController, ASAuthorizationControllerDelegate,
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
                 Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in })
                 if let user = authResult?.user {
-                    Firestore.firestore().collection("users").document(user.uid).setData(["userId": user.uid, "mail": email ,"name": name, "problemCount": 0], merge: true) { [self] (error) in
+                    Firestore.firestore().collection("users").document(user.uid).setData(["userId": user.uid, "mail": email ,"name": name], merge: true) { [self] (error) in
                         if error != nil {
                             let dialog = self.alert.failedAlert(titleText: "新規登録失敗", actionTitleText: "OK", message: (error?.localizedDescription.description)!)
                             self.present(dialog, animated: true, completion: nil)
@@ -161,7 +161,7 @@ class SignUpViewController: UIViewController, ASAuthorizationControllerDelegate,
             }
             if let user = authResult?.user, let email = appleIDCredential.email, let fullName = appleIDCredential.fullName?.givenName {
             
-                Firestore.firestore().collection("users").document(user.uid).setData(["userId": user.uid, "mail": email ,"name": fullName , "problemCount": 0], merge: true) { (error) in
+                Firestore.firestore().collection("users").document(user.uid).setData(["userId": user.uid, "mail": email ,"name": fullName ], merge: true) { (error) in
                     if error != nil {
                         let dialog = self.alert.failedAlert(titleText: "新規登録失敗", actionTitleText: "OK", message: (error?.localizedDescription.description)!)
                         self.present(dialog, animated: true, completion: nil)
