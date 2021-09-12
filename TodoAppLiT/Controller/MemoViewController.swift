@@ -14,6 +14,7 @@ class MemoViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     
     var datePicker: UIDatePicker = UIDatePicker()
+    let alert: Alert = Alert()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,16 @@ class MemoViewController: UIViewController {
     
     @IBAction func save(_ sender: Any) {
         // 入力されたデータをFireStoreに登録
-        
+        if let _todoText = todoTextField.text,
+            let _detailText = detailTextField.text,
+            let _dateText = dateTextField.text {
+            // 全ての値がnullじゃなかっらFireStoreへの保存を実行
+            
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            // どれかがnullだった時の処理
+            alert.failedAlert(titleText: "入力してください", actionTitleText: "OK", message: "入力が完了していません。")
+        }
     }
     
 
