@@ -14,7 +14,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     let currentUser = Auth.auth().currentUser
     let db = Firestore.firestore()
-    var memoDataArray: [MemoDataStore]!
+    var memoDataArray: [MemoDataStore]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +25,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoDataArray.count
+        return 1
     }
      
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as! FirstViewTableViewCell
         
         let ref = db.collection("todos")
-        ref.getDocuments { [self] (snaps, err) in
+        ref.getDocuments { (snaps, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -41,7 +41,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let data = MemoDataStore(document: document)
                     return data
                 }
-                cell.setCell(memo: self.memoDataArray[indexPath.row].todoText!, date: self.memoDataArray[indexPath.row].dateText!)
+                cell.setCell(memo: self.memoDataArray![indexPath.row].todoText!, date: self.memoDataArray![indexPath.row].dateText!)
             }
         }
         
@@ -57,14 +57,39 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            memoDataArray.remove(at: indexPath.row)
+            var deleteID = ""
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
             
-            // ========================================
-            // FireStoreでデータを削除する処理
-            
-            
-            // ========================================
+            let ref = db.collection("todos")
+            ref.getDocuments { (snaps, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    self.memoDataArray = snaps?.documents.map{ document -> MemoDataStore in
+                        let data = MemoDataStore(document: document)
+                        return data
+                    }
+                }
+                let documents = snaps?.documents
+                for i in 0..<self.memoDataArray!.count {
+                    let documentID = documents?[i].documentID
+                    if i == indexPath.row {
+                        deleteID = documentID!
+                        break
+                    }
+                }
+                
+                self.memoDataArray!.remove(at: indexPath.row)
+                
+                self.db.collection("todos").document(deleteID).delete { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document successfully removed!")
+                        self.tableView.reloadData()
+                    }
+                }
+            }
             
         }
         
