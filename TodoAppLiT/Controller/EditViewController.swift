@@ -19,6 +19,7 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     var datePicker: UIDatePicker = UIDatePicker()
     let alert: Alert = Alert()
     let db = Firestore.firestore()
+    var docID: String!
     
     var parameters: [String : String] = [:]
     
@@ -27,15 +28,14 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         todoTextField.delegate = self
         detailTextField.delegate = self
         dateTextField.delegate = self
-        
         todoTextField.text = parameters["todo"]
         detailTextField.text = parameters["detail"]
         dateTextField.text = parameters["date"]
+        docID = parameters["docID"]
         
         // ピッカーの設定
-        datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
-        datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
         dateTextField.inputView = datePicker
         
         // 決定バーの生成
@@ -61,38 +61,32 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func done(_ sender: Any) {
-        
-        // ========================================
-        // FireStoreのデータを更新する処理
-        
-        // 入力されたデータをFireStoreに登録
-        if let _todoText = todoTextField.text,
-            let _detailText = detailTextField.text,
-            let _dateText = dateTextField.text {
+        db.collection("todos").getDocuments { snaps, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            }
+            // FireStoreのデータを更新する処理（入力されたデータをFireStoreに登録）
             // 全ての値がnullじゃなかっらFireStoreへの保存を実行
-            
-        // ========================================
-            self.navigationController?.popViewController(animated: true)
-            
-        } else {
-            // どれかがnullだった時の処理
-            alert.failedAlert(titleText: "入力してください", actionTitleText: "OK", message: "入力が完了していません。")
-        }
-    }
-    
-    
-    // テキストビューを監視
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){
-            if self.todoTextField.text == "" ||
-                self.detailTextField.text == "" ||
-                self.dateTextField.text == "" {
-                self.doneButton.isEnabled = false
+            if let _todoText = self.todoTextField.text,
+               let _detailText = self.detailTextField.text,
+               let _dateText = self.dateTextField.text {
+                let id = snaps?.documents.first?.documentID
+                let document = self.db.collection("todos").document(id!)
+                document.setData(["todos": _todoText, "detail": _detailText, "date": _dateText]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Update successfully!")
+                    }
+                }
             } else {
-                self.doneButton.isEnabled = true
+                // どれかがnullだった時の処理
+                self.alert.failedAlert(titleText: "入力してください", actionTitleText: "OK", message: "入力が完了していません。")
             }
         }
-        return true
+        sleep(3)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

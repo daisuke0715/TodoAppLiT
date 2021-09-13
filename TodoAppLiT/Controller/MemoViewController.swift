@@ -40,8 +40,6 @@ class MemoViewController: UIViewController, UITextFieldDelegate {
         dateTextField.inputView = datePicker
         dateTextField.inputAccessoryView = toolbar
         
-//        saveButton.isEnabled = false
-        
     }
     
 
@@ -54,32 +52,13 @@ class MemoViewController: UIViewController, UITextFieldDelegate {
         dateTextField.text = "\(formatter.string(from: Date()))"
     }
     
-    
-    
     @IBAction func save(_ sender: Any) {
-        
         if let _todoText = todoTextField.text,
            let _detailText = detailTextField.text,
            let _dateText = dateTextField.text {
             db.collection("todos").document().setData(["todo": _todoText, "detail": _detailText, "date": _dateText], merge: true)
-            
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
-    
-    // テキストビューを監視
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){
-//            if self.todoTextField.text == "" ||
-//                self.detailTextField.text == "" ||
-//                self.dateTextField.text == "" {
-//                self.saveButton.isEnabled = false
-//            } else {
-//                self.saveButton.isEnabled = true
-//            }
-//        }
-//        return true
-//    }
 
 }

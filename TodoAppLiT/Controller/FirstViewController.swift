@@ -21,12 +21,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FirstViewTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoCell")
+        memoDataArray = getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 毎回表示の際に取得して、データ取得完了次第、reloadData()してくれるように、viewWillAppearの中に記述する
-        memoDataArray = getData()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +42,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // セルがクリックされた時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let parameters = ["todo": memoDataArray[indexPath.row].todoText, "detail": memoDataArray[indexPath.row].detailText, "date": memoDataArray[indexPath.row].dateText]
+        let parameters = ["docID": memoDataArray[indexPath.row].docID ,"todo": memoDataArray[indexPath.row].todoText, "detail": memoDataArray[indexPath.row].detailText, "date": memoDataArray[indexPath.row].dateText]
         performSegue(withIdentifier: "toEdit", sender: parameters)
     }
     
@@ -54,7 +55,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getData() -> [MemoDataStore] {
         let ref = db.collection("todos")
-        print("ref:", ref)
         ref.getDocuments { (snaps, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -96,15 +96,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 }
 
-
-
-
 class MemoDataStore: NSObject{
+    var docID: String?
     var todoText: String?
     var detailText: String?
     var dateText: String?
     init(document: QueryDocumentSnapshot) {
         let dic = document.data()
+        self.docID = document.documentID
         self.todoText = dic["todo"] as? String
         self.detailText = dic["detail"] as? String
         self.dateText = dic["date"] as? String
