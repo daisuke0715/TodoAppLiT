@@ -20,9 +20,7 @@ class EditViewController: UIViewController, UITextFieldDelegate {
     let alert: Alert = Alert()
     let db = Firestore.firestore()
     
-    var todoText: String!
-    var detailText: String!
-    var dateText: String!
+    var parameters: [String : String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +28,9 @@ class EditViewController: UIViewController, UITextFieldDelegate {
         detailTextField.delegate = self
         dateTextField.delegate = self
         
-        todoTextField.text = todoText
-        detailTextField.text = detailText
-        dateTextField.text = dateText
+        todoTextField.text = parameters["todo"]
+        detailTextField.text = parameters["detail"]
+        dateTextField.text = parameters["date"]
         
         // ピッカーの設定
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime

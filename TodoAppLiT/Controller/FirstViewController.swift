@@ -14,99 +14,60 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     let currentUser = Auth.auth().currentUser
     let db = Firestore.firestore()
-    var memoDataArray: [MemoDataStore]?
+    var memoDataArray: [MemoDataStore] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FirstViewTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoCell")
-        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 毎回表示の際に取得して、データ取得完了次第、reloadData()してくれるように、viewWillAppearの中に記述する
+        memoDataArray = getData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return memoDataArray.count
     }
      
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell") as! FirstViewTableViewCell
-        
-        let ref = db.collection("todos")
-        ref.getDocuments { (snaps, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-               
-                self.memoDataArray = snaps!.documents.map { document -> MemoDataStore in
-                    let data = MemoDataStore(document: document)
-                    return data
-                }
-                cell.setCell(memo: self.memoDataArray![indexPath.row].todoText!, date: self.memoDataArray![indexPath.row].dateText!)
-            }
-        }
-        
+        cell.setCell(memo: memoDataArray[indexPath.row].todoText!, date: memoDataArray[indexPath.row].dateText!)
         return cell
-    }
-    
-    // セルの編集を許可
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // セルのスワイプで削除
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            var deleteID = ""
-            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-            
-            let ref = db.collection("todos")
-            ref.getDocuments { (snaps, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    self.memoDataArray = snaps?.documents.map{ document -> MemoDataStore in
-                        let data = MemoDataStore(document: document)
-                        return data
-                    }
-                }
-                let documents = snaps?.documents
-                for i in 0..<self.memoDataArray!.count {
-                    let documentID = documents?[i].documentID
-                    if i == indexPath.row {
-                        deleteID = documentID!
-                        break
-                    }
-                }
-                
-                self.memoDataArray!.remove(at: indexPath.row)
-                
-                self.db.collection("todos").document(deleteID).delete { err in
-                    if let err = err {
-                        print("Error removing document: \(err)")
-                    } else {
-                        print("Document successfully removed!")
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-            
-        }
-        
     }
     
     // セルがクリックされた時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toEdit", sender: nil)
+        let parameters = ["todo": memoDataArray[indexPath.row].todoText, "detail": memoDataArray[indexPath.row].detailText, "date": memoDataArray[indexPath.row].dateText]
+        performSegue(withIdentifier: "toEdit", sender: parameters)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEdit" {
             let editVC = segue.destination as! EditViewController
-            editVC.todoText = "aaa"
-            editVC.detailText = "aaaa"
-            
+            editVC.parameters = sender as! [String : String]
         }
+    }
+    
+    func getData() -> [MemoDataStore] {
+        let ref = db.collection("todos")
+        print("ref:", ref)
+        ref.getDocuments { (snaps, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            }
+            self.memoDataArray = snaps!.documents.map { document -> MemoDataStore in
+                let data = MemoDataStore(document: document)
+                return data
+            }
+            // データ取得が終わったタイミングでtableViewをリロードデータ（LiveDataみたいなんあったらこれタイミングよしなにしてくれる）
+            self.tableView.reloadData()
+        }
+        return memoDataArray
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -136,13 +97,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 }
 
 
+
+
 class MemoDataStore: NSObject{
     var todoText: String?
+    var detailText: String?
     var dateText: String?
     init(document: QueryDocumentSnapshot) {
         let dic = document.data()
-        self.todoText = dic["todo"] as! String
-        self.dateText = dic["date"] as! String
+        self.todoText = dic["todo"] as? String
+        self.detailText = dic["detail"] as? String
+        self.dateText = dic["date"] as? String
     }
 
 }
