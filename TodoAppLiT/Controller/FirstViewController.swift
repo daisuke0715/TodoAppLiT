@@ -21,13 +21,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FirstViewTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoCell")
-        memoDataArray = getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 毎回表示の際に取得して、データ取得完了次第、reloadData()してくれるように、viewWillAppearの中に記述する
-        tableView.reloadData()
+        memoDataArray = getData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +50,33 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let editVC = segue.destination as! EditViewController
             editVC.parameters = sender as! [String : String]
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+         return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            db.collection("todos").getDocuments { snaps, err in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    return
+                }
+                let id = snaps?.documents.first?.documentID
+                let document = self.db.collection("todos").document(id!)
+                document.delete() { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Delete successfully!")
+                    }
+                }
+            }
+            memoDataArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+       }
+        
     }
     
     func getData() -> [MemoDataStore] {
